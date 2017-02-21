@@ -20,6 +20,10 @@ controller: 'RegisterController'
 //logout page
 .when('/logout', {
 controller: 'LogoutController'
+})
+.otherwise({
+templateUrl : 'public/views/home.html',
+controller  : 'MainController'
 });
 $locationProvider.html5Mode(true);
 }]);
