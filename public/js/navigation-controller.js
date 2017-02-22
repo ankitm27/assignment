@@ -18,11 +18,17 @@ console.log(error);
 });
 };
 
-if(localStorage.getItem('User-Data')){
-//console.log(localStorage.getItem('User-Data'))
-$scope.isLoggedIn = true;
-//funtion of finding all users
-$scope.listOfUser();
+email = localStorage.getItem('User-Data');
+email ={
+  email:email
+}
+$http.post('api/user/checklogin',email).success(function(err,response){
+if(err){
+    if(err.response){
+    $scope.isLoggedIn = true;
+    $scope.listOfUser();
+  }
 }
 
+});
 });

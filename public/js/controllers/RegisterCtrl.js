@@ -24,7 +24,7 @@ var registerUser = {
   email: email,
   password: password
 }
-console.log(registerUser);
+//console.log(registerUser);
 //http request to register controller of server to adding new user
 $http.post('/api/user/register', registerUser).success(function(response,headers){
 if(response.error){
@@ -33,10 +33,6 @@ $scope.error = response.error;
 }else{
 $scope.issuccess = true;
 $scope.success = "sucessfully register";
-//change url after sucessfully register
-//var url = window.location.origin;
-//url = url + "/login";
-//$location.path('/login');
 $timeout(function(){$location.path('/login');},1000);
 }
 }).error(function(error){

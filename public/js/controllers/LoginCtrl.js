@@ -44,8 +44,8 @@ $scope.error = "user not exist redirecting to signup ....";
 $timeout(function(){$location.path('/register');},1000);
 }
 }else{
-//for tracking sessions
-localStorage.setItem('User-Data', JSON.stringify(response));
+//console.log(response.email);
+localStorage.setItem('User-Data', response.email);
 //$scope.listOfUser();
 var url = window.location.origin;
 $window.location.href = url;

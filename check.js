@@ -1,57 +1,27 @@
-var express            = require('express');
-var app                = express();
-var Sequelize          = require('sequelize');
+var express = require('express');
+var redis   = require("redis");
+var session = require('express-session');
+var redisStore = require('connect-redis')(session);
+var bodyParser = require('body-parser');
+//var client  = redis.createClient();
+var app = express();
+client = redis.createClient("6379", "127.0.0.1");
 
-//var Sequelize = require('sequelize');
-var sequelize = new Sequelize('login', 'root', 'root');
-
-var User = sequelize.define('newcheck', {
-  username: Sequelize.STRING,
-  firstname: Sequelize.STRING
+client.get('framewo', function(err, reply) {
+    console.log(reply);
 });
+//app.use(session({
+//    secret: 'ssshhhhh',
+    // create new redis store.
+//    store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl :  260}),
+//    saveUninitialized: false,
+//    resave: false
+//}));
 
-var log = function(inst){
-  console.log(inst.get())
-}
-var q = {
-  username: 'janedoefesrgtuyioi',
-  firstname: 'bdjfnkelm'
-}
-//sequelize.sync().then(function() {
-//  return User.create(q);
-//  }).then(function(jane) {
-//  console.log(jane.get({
-//    plain: true
-//  }));
-//});
+//session.check = "hello";
+//console.log(session.key["check"]);
 
-User.count({where: {username:"janedoefesrgtuyioi"}}).then(function(user) {
-  // project will be the first entry of the Projects table with the title 'aProject' || null
-  // project.title will contain the name of the project
-  //user.forEach(log)
-  console.log(user)
-})
 
-//User.find().then('sql',console.log).then(console.log("chek"))
-
-//console.log("check");
-//.then(function(jane) {
-//  console.log(jane.get({
-//    plain: true
-//  }));
-//});
-
-//console.log(User.findAll({}));
-//t = 0;
-//console.log(User.findAll({attributes: ['username']}));
-//console.log(t);
-//User.findAll()
-//console.log("check");
-//console.log(response);
-//console.log("check2");
-
-var port = process.env.PORT || 3000;
-app.listen(port);
-console.log('Magic happens on port ' + port); 			// shoutout to the user
-//exports app for other files
-exports = module.exports = app;
+app.listen(3000,function(){
+    console.log("App Started on PORT 3000");
+});
