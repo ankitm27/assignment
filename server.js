@@ -36,4 +36,4 @@ app.post('/api/user/username',usernameController.username);
 app.listen(port);
 console.log('Magic happens on port ' + port); 			// shoutout to the user
 //exports app for other files
-exports = module.exports = app; 						
+exports = module.exports = app;

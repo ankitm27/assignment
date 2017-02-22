@@ -1,6 +1,28 @@
 //login controller
 angular.module('LoginCtrl', []).controller('LoginController', function($scope,$http,$window,$location,$timeout) {
 //$scope.tagline = 'The square root of life is pi!';
+
+
+//funtion of finding all users
+$scope.listOfUser = function(){
+//http request to username server controller
+$http.post('api/user/username').success(function(response){
+if(response.error){
+$scope.error = response.error;
+}else{
+console.log(response);
+//set all the available username
+$scope.isUserList = true;
+$scope.listOfAllUser = response;
+}
+}).error(function(error){
+console.log(error);
+});
+};
+
+
+
+
 $scope.usernotpresent = false;
 //function for login
 $scope.loginUser = function(){
@@ -19,14 +41,12 @@ else{
 $scope.isError = true;
 $scope.error = "user not exist redirecting to signup ....";
 //redirect to register page
-var url = window.location.origin;
-url = url + "/register";
-$timeout(function(){$window.location.href = url;},1000);
+$timeout(function(){$location.path('/register');},1000);
 }
 }else{
 //for tracking sessions
 localStorage.setItem('User-Data', JSON.stringify(response));
-//redirect to index page
+//$scope.listOfUser();
 var url = window.location.origin;
 $window.location.href = url;
 }

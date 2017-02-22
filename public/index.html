@@ -19,23 +19,24 @@
 </head>
 
 <body ng-controller="NavigationController">
-<div ng-show = "isLoggedIn" ng-init="listOfUser()">
-<div class="container">
-<nav class="navbar navbar-inverse">
-<ul class="nav navbar-nav">
+<div ng-show = "isLoggedIn">
+<div class="container"><nav class="navbar navbar-inverse"><ul class="nav navbar-nav">
 <div ng-controller="LogoutController">
 <ul class="nav navbar-nav">
 <li><a href="/logout" ng-click="logoutUser()">logout</a></li>
-</ul>
-</div>
-</ul>
-</nav>
+</ul></div></ul></nav>
+
+<div ng-controller="LoginController" ng-show="isUserList">
 <h1 ng-repeat="users in listOfAllUser">
 <div class="panel panel-default">
 <div class="panel-body">{{ users.email }}</div>
+</div></h1>
+<!--<div ng-view></div>-->
+</div>
+<!--<div ng-view></div>-->
 </div>
 </div>
-</div>
+
 <div ng-hide = "isLoggedIn">
 <div class="container">
 <nav class="navbar navbar-inverse">

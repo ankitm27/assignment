@@ -14,14 +14,14 @@
 
 
 <div class="form-group">
-    <label for="fullname">Username:</label>
+    <label for="username">Username:</label>
     <div class="input-group">
       <span class="input-group-addon" style="border-radius: 0px;"><i class="fa fa-key fa-fw"></i></span>
-      <input type="text" name="fullname" ng-model="newUser.fullname" class="form-control" id="fullname" placeholder="fullname" required="required" ng-maxlength="maxlength">
+      <input type="text" name="username" ng-model="newUser.username" class="form-control" id="username" placeholder="username" required="required" ng-maxlength="maxlength">
     </div>
-    <span style="color:red" ng-show="myForm.fullname.$dirty && myForm.fullname.$invalid">
-    <span ng-show="myForm.fullname.$error.required">username is required.</span>
-    <span ng-show="myForm.fullname.$invalid">Username length must be less then 20.</span>
+    <span style="color:red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
+    <span ng-show="myForm.username.$error.required">username is required.</span>
+    <span ng-show="myForm.username.$invalid">Username length must be less then 20.</span>
     </span>
 </div>
 
@@ -60,5 +60,5 @@
     <span ng-show="myForm.confirm_password.$error.required">Password is required.</span>
   </div>
 
-<input type="submit" ng-disabled="myForm.password.$pristine  || myForm.confirm_password.$pristine || myForm.email.$pristine ||  myForm.fullname.$pristine || myForm.password.$dirty && myForm.password.$invalid  || myForm.confirm_password.$dirty && myForm.confirm_password.$invalid || myForm.fullname.$dirty && myForm.fullname.$invalid || myForm.email.$dirty && myForm.email.$invalid" class="btn btn-default" ng-click="createUser()" value="Sign up" id="signup"/>
+<input type="submit" ng-disabled="myForm.password.$pristine  || myForm.confirm_password.$pristine || myForm.email.$pristine ||  myForm.username.$pristine || myForm.password.$dirty && myForm.password.$invalid  || myForm.confirm_password.$dirty && myForm.confirm_password.$invalid || myForm.username.$dirty && myForm.username.$invalid || myForm.email.$dirty && myForm.email.$invalid" class="btn btn-default" ng-click="createUser()" value="Sign up" id="signup"/>
 </form>
