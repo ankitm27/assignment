@@ -16,5 +16,6 @@ user.forEach(log);
 console.log(arr);
 res.setHeader('Content-Type', 'application/json');
 res.send(JSON.stringify(arr));
+arr = [];
 })
 }
